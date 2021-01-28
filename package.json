@@ -23,10 +23,5 @@
   "bugs": {
     "url": "https://github.com/djfuzzy/thebrewist/issues"
   },
-  "homepage": "https://github.com/djfuzzy/thebrewist#readme",
-  "dependencies": {
-    "body-parser": "^1.19.0",
-    "cors": "^2.8.5",
-    "express": "^4.17.1"
-  }
+  "homepage": "https://github.com/djfuzzy/thebrewist#readme"
 }
