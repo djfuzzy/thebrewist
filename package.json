@@ -1,0 +1,32 @@
+{
+  "name": "brewist",
+  "version": "1.0.0",
+  "description": "An app for rating beer",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/djfuzzy/thebrewist.git"
+  },
+  "keywords": [
+    "nodejs",
+    "express",
+    "vuejs",
+    "nosql",
+    "rest",
+    "api"
+  ],
+  "author": "Dillon Forsberg",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/djfuzzy/thebrewist/issues"
+  },
+  "homepage": "https://github.com/djfuzzy/thebrewist#readme",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "cors": "^2.8.5",
+    "express": "^4.17.1"
+  }
+}
