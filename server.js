@@ -1,6 +1,7 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const cors = require('cors');
+const userLogger = require('./app/middleware/user-logger');
 
 const app = express();
 
@@ -15,6 +16,8 @@ app.use(bodyParser.json());
 
 // parse requests of content-type - application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({ extended: true }));
+
+app.use(userLogger);
 
 require('./app/routes/beer.routes')(app);
 

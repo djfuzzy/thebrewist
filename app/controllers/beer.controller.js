@@ -1,6 +1,6 @@
 const axios = require('axios');
 const noSql = require('nosql');
-const db = noSql.load('/data/beer-db.nosql');
+const beerRatingsDb = noSql.load('./data/beer-ratings.nosql');
 
 exports.findByName = (req, res) => {
   const name = req.params.name;
@@ -28,23 +28,28 @@ exports.findByName = (req, res) => {
 
 // TODO: This doesn't work
 const findBeerRatingById = (id) =>
-  db.find().make((builder) => {
+  beerRatingsDb.find().make((builder) => {
     builder.where('id', id);
     return builder.callback((err, response) => {
-      console.log(response);
-      return err || response;
+      if (err) {
+        console.log(`An error occurred: ${err}`);
+        return err;
+      } else {
+        console.log(`Response: ${response}`);
+        return response;
+      }
     });
   });
 
 exports.addRating = (req, res) => {
-  const id = parseInt(req.params.id, 10);
+  const id = parseInt(req.params.id);
 
   if (!id || id < 1) {
     res.status(500).send('Id is invalid');
     return;
   }
 
-  const rating = parseInt(req.body.rating, 10);
+  const rating = parseInt(req.body.rating);
   if (!rating || rating < 1 || rating > 5) {
     res.status(500).send('Beer rating must be a number from 1 to 5');
     return;
@@ -56,16 +61,19 @@ exports.addRating = (req, res) => {
     comments: req.body.comments || null,
   };
 
-  db.update(beerRating, true).callback((err, count) => {
-    console.log(count);
-    console.log('The user has been created.');
+  beerRatingsDb.insert(beerRating).callback((err) => {
+    if (err) {
+      console.log(`An error occurred: ${err}`);
+    } else {
+      console.log('The beer rating has been inserted');
+    }
   });
 
   res.send(findBeerRatingById(id));
 };
 
 exports.findRatingById = (req, res) => {
-  const id = parseInt(req.params.id, 10);
+  const id = parseInt(req.params.id);
 
   if (!id || id < 1) {
     res.status(500).send('Id is invalid');
