@@ -1,6 +1,5 @@
 const axios = require('axios');
-const noSql = require('nosql');
-const beerRatingsDb = noSql.load('./data/beer-ratings.nosql');
+const beerRatingsDb = require('../utilities/db-helper').loadBeerRatingsDb;
 
 exports.findByName = (req, res) => {
   const name = req.params.name.replace(' ', '_');
