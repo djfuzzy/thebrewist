@@ -5,9 +5,9 @@ module.exports = (app) => {
 
   router.get('/:name', beer.findByName);
 
-  router.put('/ratings/:id', beer.addRating);
+  router.post('/ratings/:id', beer.addRating);
 
-  router.get('/ratings/:id', beer.findRatingById);
+  router.get('/ratings/:id', beer.findRatingsById);
 
   app.use('/api/beer', router);
 };
