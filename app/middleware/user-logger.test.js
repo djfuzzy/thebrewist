@@ -19,15 +19,24 @@ const mockedRes = mockRes();
 
 const mockedNext = jest.fn();
 
+const errorMessage = 'A valid email was not set for x-user';
+
+test('no email address returns 500 error with message', () => {
+  const mockedReq = mockReq(undefined);
+
+  userLogger(mockedReq, mockedRes, mockedNext);
+
+  expect(mockedRes.status).toHaveBeenCalledWith(500);
+  expect(mockedRes.send).toHaveBeenCalledWith(errorMessage);
+});
+
 test('invalid email address returns 500 error with message', () => {
   const mockedReq = mockReq('invalid@email');
 
   userLogger(mockedReq, mockedRes, mockedNext);
 
   expect(mockedRes.status).toHaveBeenCalledWith(500);
-  expect(mockedRes.send).toHaveBeenCalledWith(
-    'A valid email was not set for x-user'
-  );
+  expect(mockedRes.send).toHaveBeenCalledWith(errorMessage);
 });
 
 test('valid email address logs request and passes control', () => {
