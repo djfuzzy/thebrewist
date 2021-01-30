@@ -7,10 +7,15 @@ A website for rating beer using [Punk API](https://punkapi.com/documentation/v2)
 - [Vue.js](https://vuejs.org/) (client)
 - [Mocha](https://mochajs.org/) (unit tests)
 - [nosql](https://docs.totaljs.com/latest/en.html#api~Database) (local database)
+- [memory-cache](https://github.com/ptarjan/node-cache) (external request caching)
 
 ## Terminal Commands
 
 In the project directory, you can run:
+
+### `npm install`
+
+Installs the project's dependencies.
 
 ### `node server.js`
 
