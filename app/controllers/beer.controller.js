@@ -4,7 +4,7 @@ const cache = require('memory-cache');
 const beerRatingsDb = require('../utilities/db-helper').loadBeerRatingsDb;
 
 exports.findByName = (req, res) => {
-  const name = req.params.name.replace(' ', '_');
+  const name = req.params.name.replace(' ', '_'); // Punk API requires spaces to be replaced with underscores
   const punkApiRequestUrl = `https://api.punkapi.com/v2/beers?beer_name=${name}`;
 
   const cachedQuery = cache.get(name);
@@ -33,18 +33,14 @@ exports.findByName = (req, res) => {
   }
 };
 
-// TODO: This doesn't work
-const findBeerRatingById = (id) =>
+const findBeerRatingsById = (id, success, failure) =>
   beerRatingsDb.find().make((builder) => {
     builder.where('id', id);
-
-    return builder.callback((err, response) => {
+    builder.callback((err, response) => {
       if (err) {
-        console.log(`An error occurred: ${err}`);
-        return err;
+        failure(err);
       } else {
-        console.log(`Response: ${response}`);
-        return response;
+        success(response);
       }
     });
   });
@@ -69,18 +65,26 @@ exports.addRating = (req, res) => {
     comments: req.body.comments || null,
   };
 
+  // TODO: Should id's be unique?
   beerRatingsDb.insert(beerRating).callback((err) => {
     if (err) {
-      console.log(`An error occurred: ${err}`);
+      res
+        .status(500)
+        .send(`There was an error inserting the beer rating: ${error}`);
     } else {
-      console.log('The beer rating has been inserted');
+      findBeerRatingsById(
+        id,
+        (beerRatings) => res.send(beerRatings),
+        (error) =>
+          res
+            .status(500)
+            .send(`There was an error retrieving the beer ratings: ${error}`)
+      );
     }
   });
-
-  res.send(findBeerRatingById(id));
 };
 
-exports.findRatingById = (req, res) => {
+exports.findRatingsById = (req, res) => {
   const id = parseInt(req.params.id);
 
   if (!id || id < 1) {
@@ -88,5 +92,12 @@ exports.findRatingById = (req, res) => {
     return;
   }
 
-  res.send(findBeerRatingById(id));
+  findBeerRatingsById(
+    id,
+    (beerRatings) => res.send(beerRatings),
+    (error) =>
+      res
+        .status(500)
+        .send(`There was an error retrieving beer ratings: ${error}`)
+  );
 };
