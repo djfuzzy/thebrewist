@@ -5,7 +5,12 @@ const EMAIL_REGEXP = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+
 module.exports = (request, response, next) => {
   const email = request.get('x-user');
 
-  if (!EMAIL_REGEXP.test(email)) {
+  // Only validate certain requests (might want to do it the other way around instead)
+  if (
+    request.path.startsWith('/api/beer/ratings') &&
+    request.method === 'POST' &&
+    !EMAIL_REGEXP.test(email)
+  ) {
     response.status(500).send('A valid email was not set for x-user');
   } else {
     requestLogDb.insert({
