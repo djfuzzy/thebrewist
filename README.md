@@ -1,10 +1,9 @@
-# The Brewist 🍺 📝 🍻
+# The Brewist (API) 🍺 📝 🍻
 
-A website for rating beer using [Punk API](https://punkapi.com/documentation/v2) to demonstrate a basic single page web app using:
+An API for rating beer using [Punk API](https://punkapi.com/documentation/v2) to demonstrate a basic API framework using:
 
 - [Express.js](https://expressjs.com/) (server)
 - [Axios](https://www.axios.com/) (for connecting to Punk API)
-- [Vue.js](https://vuejs.org/) (client)
 - [Jest](https://jestjs.io/) (unit tests)
 - [nosql](https://docs.totaljs.com/latest/en.html#api~Database) (local database)
 - [memory-cache](https://github.com/ptarjan/node-cache) (external request caching)
@@ -15,18 +14,18 @@ In the project directory, you can run:
 
 ### `npm install`
 
-Installs the project's dependencies.
+Installs the server project's dependencies.
 
 ### `node server.js`
 
 Runs the server in development mode.<br>
-Open [http://localhost:8080](http://localhost:8080) to view it in the browser.
+Open [http://localhost:5000](http://localhost:5000) to view it in the browser.
 
 ### `npm test`
 
-Runs the Jest tests.
+Runs the Jest tests for the server project.
 
-## API
+## API Library
 
 ### GET `/api/beers/Weiss`
 
