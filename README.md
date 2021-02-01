@@ -4,6 +4,7 @@ An API for rating beer using [Punk API](https://punkapi.com/documentation/v2) to
 
 - [Express.js](https://expressjs.com/) (server)
 - [Axios](https://www.axios.com/) (for connecting to Punk API)
+- [body-parser](https://github.com/expressjs/body-parser) (for parsing JSON requests)
 - [Jest](https://jestjs.io/) (unit tests)
 - [nosql](https://docs.totaljs.com/latest/en.html#api~Database) (local database)
 - [memory-cache](https://github.com/ptarjan/node-cache) (external request caching)
@@ -26,6 +27,8 @@ Open [http://localhost:5000](http://localhost:5000) to view it in the browser.
 Runs the Jest tests for the server project.
 
 ## API Library
+
+Below is a list of the available endpoints with examples.
 
 ### GET `/api/beers/Weiss`
 
@@ -86,6 +89,9 @@ Returns all beer rating objects with an Id of `3` or `null` if not found. A samp
 ]
 ```
 
+## Client
+
+The client app with documentation can be found in the '/client' folder.
 ## TODO
 
 - Add better email validation and authorization
