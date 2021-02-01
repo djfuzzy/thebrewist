@@ -91,8 +91,9 @@ Returns all beer rating objects with an Id of `3` or `null` if not found. A samp
 
 ## Client
 
-The client app with documentation can be found in the '/client' folder.
-## TODO
+The client app with documentation can be found in the `/client` folder.
+
+## To Do
 
 - Add better email validation and authorization
 - Add endpoint for getting beer from Punk API by ID
