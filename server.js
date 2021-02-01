@@ -6,7 +6,7 @@ const userLogger = require('./app/middleware/user-logger');
 const app = express();
 
 var corsOptions = {
-  origin: 'http://localhost:8080',
+  origin: ['http://localhost:8080', 'https://localhost:8080'],
 };
 
 app.use(cors(corsOptions));
@@ -22,7 +22,7 @@ app.use(userLogger);
 require('./app/routes/beer.routes')(app);
 
 // set port, listen for requests
-const PORT = process.env.PORT || 8080;
+const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}.`);
 });

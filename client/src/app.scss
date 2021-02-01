@@ -1,0 +1,16 @@
+// Define variable defaults
+$body-bg: #111;
+$body-color: #dad3c9;
+$link-color: #cfa400;
+$link-hover-color: #cfa400;
+$primary: #cfa400;
+
+// Then import Bootstrap an BootstrapVue SCSS files (order is important)
+@import 'node_modules/bootstrap/scss/bootstrap.scss';
+@import 'node_modules/bootstrap-vue/src/index.scss';
+
+.container {
+  background-color: #222;
+  max-width: 800px;
+  padding-bottom: 5rem;
+}
