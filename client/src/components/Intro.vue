@@ -20,13 +20,14 @@
 
 <script>
 export default {
-  name: 'Intro'
+  name: 'Intro',
 };
 </script>
 
 <style scoped lang="scss">
 .intro {
   text-align: center;
+  margin-bottom: 1rem;
 }
 
 .header-img {

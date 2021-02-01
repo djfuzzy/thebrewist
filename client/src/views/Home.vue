@@ -2,19 +2,20 @@
   <div class="home">
     <Intro />
     <SearchForm />
+    <SearchResults :items="this.$store.getters['beerRatings/searchResults']" />
   </div>
 </template>
 
 <script>
-// @ is an alias to /src
 import Intro from '@/components/Intro.vue';
 import SearchForm from '@/components/SearchForm.vue';
+import SearchResults from '@/components/SearchResults.vue';
 
 export default {
-  name: 'Home',
   components: {
     Intro,
     SearchForm,
+    SearchResults,
   },
 };
 </script>

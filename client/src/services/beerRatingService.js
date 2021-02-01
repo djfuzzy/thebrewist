@@ -5,8 +5,10 @@ export default {
     let res = await HttpClient.get(`api/beer/${name}`);
     return cb(res.data);
   },
-  async addBeerRating(id, beerRating, cb) {
-    let res = await HttpClient.post(`api/beer/ratings/${id}`, beerRating);
+  async addBeerRating(id, email, beerRating, cb) {
+    const httpClient = HttpClient;
+    httpClient.defaults.headers.common['X-User'] = email;
+    let res = await httpClient.post(`api/beer/ratings/${id}`, beerRating);
     return cb(res.data);
   },
   async getBeerRatingsById(id, cb) {

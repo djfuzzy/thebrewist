@@ -1,31 +1,44 @@
 import BeerRatingService from '../../services/beerRatingService.js';
 
 const state = () => ({
-  beers: [],
-  isBeersLoading: false,
+  searchResults: [],
+  selectedBeerRatings: [],
 });
 
 const getters = {
-  isBeersLoading: state => state.isBeersLoading,
-  beers: state => state.beers,
+  selectedBeerRatings: state => state.selectedBeerRatings,
+  searchResults: state => state.searchResults,
 };
 
 const actions = {
   findBeers({ commit }, name) {
-    commit('setIsBeersLoading', true);
-    BeerRatingService.findBeers(name, beers => {
-      commit('setBeers', beers);
-      commit('setIsBeersLoading', false);
+    BeerRatingService.findBeers(name, searchResults => {
+      commit('setSearchResults', searchResults);
     });
+  },
+  getById({ commit }, id) {
+    BeerRatingService.getBeerRatingsById(id, beerRatings => {
+      commit('setSelectedBeerRatings', beerRatings);
+    });
+  },
+  add({ commit }, { id, data }) {
+    BeerRatingService.addBeerRating(
+      id,
+      data.email,
+      { rating: data.rating, comments: data.comments },
+      beerRatings => {
+        commit('setSelectedBeerRatings', beerRatings);
+      },
+    );
   },
 };
 
 const mutations = {
-  setBeers(state, beers) {
-    state.beers = beers;
+  setSearchResults(state, searchResults) {
+    state.searchResults = searchResults;
   },
-  setIsBeersLoading(state, isBeersLoading) {
-    state.isBeersLoading = isBeersLoading;
+  setSelectedBeerRatings(state, selectedBeerRatings) {
+    state.selectedBeerRatings = selectedBeerRatings;
   },
 };
 
