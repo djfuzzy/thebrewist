@@ -47,3 +47,4 @@ Lints and fixes files.
 - Use browser history for routes
 - Add loading spinners
 - Add unit tests
+- Integrate with server projects

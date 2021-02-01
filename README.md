@@ -83,3 +83,8 @@ Returns all beer rating objects with an Id of `3` or `null` if not found. A samp
   }
 ]
 ```
+
+## TODO
+
+- Add better email validation and authorization
+- Add endpoint for getting beer from Punk API by ID
