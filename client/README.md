@@ -1,4 +1,4 @@
-The Brewist (Client) 🍺 📝 🍻
+# The Brewist (Client) 🍺 📝 🍻
 
 A website for rating beer from the [Punk API](https://punkapi.com/documentation/v2) to demonstrate a basic single page web app client using:
 
@@ -7,6 +7,9 @@ A website for rating beer from the [Punk API](https://punkapi.com/documentation/
 - [vue-router](https://router.vuejs.org/) (routing)
 - [vuex](https://vuex.vuejs.org/) (state management)
 - [Axios](https://www.axios.com/) (for connecting to the API)
+- [axios-extensions](https://www.npmjs.com/package/axios-extensions) (for caching API requests)
+- [Bootstrap](https://getbootstrap.com/) (UI framework)
+- [Bootstrap-Vue](https://bootstrap-vue.org/) (UI components)
 - [Jest](https://jestjs.io/) (unit tests)
 
 ## Terminal Commands
@@ -33,3 +36,13 @@ Runs the Jest tests.
 ### `npm run lint`
 
 Lints and fixes files.
+
+## To Do
+
+- Format search results better
+- Format beer ratings better
+- Show server errors
+- Better styled validation
+- Use browser history for routes
+- Add loading spinners
+- Add unit tests
