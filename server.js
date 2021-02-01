@@ -6,7 +6,7 @@ const userLogger = require('./app/middleware/user-logger');
 const app = express();
 
 var corsOptions = {
-  origin: 'http://localhost:8080',
+  origin: ['http://localhost:8080', 'https://localhost:8080'],
 };
 
 app.use(cors(corsOptions));
