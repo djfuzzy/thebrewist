@@ -40,6 +40,7 @@ Lints and fixes files.
 ## To Do
 
 - Format search results better
+- Show beer name on ratings page
 - Format beer ratings better
 - Show server errors
 - Better styled validation
