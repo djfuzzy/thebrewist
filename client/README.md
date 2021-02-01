@@ -27,7 +27,7 @@ Open [http://localhost:8080](http://localhost:8080) to view it in the browser.
 
 ### `npm run build`
 
-Compiles and minifies for productions.
+Compiles and minifies for production.
 
 ### `npm test`
 
@@ -43,8 +43,7 @@ Lints and fixes files.
 - Show beer name on ratings page
 - Format beer ratings better
 - Show server errors
-- Better styled validation
+- Better styled validation messages
 - Use browser history for routes
 - Add loading spinners
 - Add unit tests
-- Integrate with server projects
