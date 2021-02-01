@@ -70,6 +70,8 @@ Adds a beer rating with an Id of `3` and the following body:
 }
 ```
 
+Note: Request must have an `x-user` header containing a valid email address and the request will be logged to the database along with it.
+
 ### GET `/api/beers/ratings/3`
 
 Returns all beer rating objects with an Id of `3` or `null` if not found. A sample response:
@@ -88,3 +90,5 @@ Returns all beer rating objects with an Id of `3` or `null` if not found. A samp
 
 - Add better email validation and authorization
 - Add endpoint for getting beer from Punk API by ID
+- Store user information with the beer rating
+- Add a primary key for beer ratings
