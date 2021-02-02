@@ -91,7 +91,7 @@ Returns all beer rating objects with an Id of `3` or `null` if not found. A samp
 
 ## Client
 
-The client app with documentation can be found in the `/client` folder.
+The client app with [documentation](/client/README.md) can be found in the `/client` folder.
 
 ## To Do
 
