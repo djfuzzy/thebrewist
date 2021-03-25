@@ -2,12 +2,15 @@ import BeerRatingService from '../../services/beerRatingService.js';
 
 const state = () => ({
   searchResults: [],
+  selectedBeer: undefined,
   selectedBeerRatings: [],
 });
 
 const getters = {
   selectedBeerRatings: state => state.selectedBeerRatings,
+  selectedBeer: state => state.selectedBeer,
   searchResults: state => state.searchResults,
+  getSelectedBeerName: state => state.selectedBeer?.name,
 };
 
 const actions = {
@@ -15,6 +18,9 @@ const actions = {
     BeerRatingService.findBeers(name, searchResults => {
       commit('setSearchResults', searchResults);
     });
+  },
+  selectBeer({ commit }, beer) {
+    commit('setSelectedBeer', beer);
   },
   getById({ commit }, id) {
     BeerRatingService.getBeerRatingsById(id, beerRatings => {
@@ -36,6 +42,9 @@ const actions = {
 const mutations = {
   setSearchResults(state, searchResults) {
     state.searchResults = searchResults;
+  },
+  setSelectedBeer(state, beer) {
+    state.selectedBeer = beer;
   },
   setSelectedBeerRatings(state, selectedBeerRatings) {
     state.selectedBeerRatings = selectedBeerRatings;

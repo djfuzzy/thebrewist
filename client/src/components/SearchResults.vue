@@ -19,6 +19,7 @@ export default {
   },
   methods: {
     selectBeer(item) {
+      this.$store.dispatch('beerRatings/selectBeer', item);
       this.$router.push({ name: 'Ratings', params: { id: item.id } });
     },
   },
