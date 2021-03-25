@@ -2,7 +2,10 @@
   <div class="home">
     <Intro />
     <SearchForm />
-    <SearchResults :items="this.$store.getters['beerRatings/searchResults']" />
+    <SearchResults
+      :isLoading="this.$store.getters['beerRatings/isSearchResultsLoading']"
+      :items="this.$store.getters['beerRatings/searchResults']"
+    />
   </div>
 </template>
 

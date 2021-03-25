@@ -1,9 +1,10 @@
 <template>
   <div class="ratings">
     <b-link href="/">Go back to home</b-link>
-    <h2>Ratings for Beer with Id {{ id }}</h2>
+    <h2>Ratings for {{ this.name }}</h2>
     <BeerRatingForm :id="id" />
     <BeerRatingsList
+      :isLoading="this.$store.getters['beerRatings/isBeerRatingsLoading']"
       :items="this.$store.getters['beerRatings/selectedBeerRatings']"
     />
   </div>
@@ -19,7 +20,11 @@ export default {
     BeerRatingsList,
   },
   props: ['id'],
+  data() {
+    return { name: '' };
+  },
   created() {
+    this.name = this.$store.getters['beerRatings/getSelectedBeerName'];
     this.$store.dispatch('beerRatings/getById', this.id);
   },
 };
