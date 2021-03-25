@@ -4,6 +4,7 @@
     <h2>Ratings for {{ this.name }}</h2>
     <BeerRatingForm :id="id" />
     <BeerRatingsList
+      :isLoading="this.$store.getters['beerRatings/isBeerRatingsLoading']"
       :items="this.$store.getters['beerRatings/selectedBeerRatings']"
     />
   </div>
