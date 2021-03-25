@@ -41,10 +41,8 @@ Lints and fixes files.
 
 - Move state calls from components to views
 - Format search results better
-- Show beer name on ratings page
 - Format beer ratings better
 - Show server errors
 - Better styled validation messages
 - Use browser history for routes
-- Add loading spinners
 - Add unit tests
