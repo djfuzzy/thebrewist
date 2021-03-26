@@ -25,7 +25,7 @@ export default {
   methods: {
     onSubmit(event) {
       event.preventDefault();
-      this.$store.dispatch('beerRatings/findBeers', this.searchTerms);
+      this.$emit('search-terms-changed', this.searchTerms);
     },
   },
 };

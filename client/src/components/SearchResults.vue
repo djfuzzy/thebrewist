@@ -29,9 +29,7 @@ export default {
   },
   methods: {
     selectBeer(item) {
-      // TODO: (DF) Move this to view
-      this.$store.dispatch('beerRatings/selectBeer', item);
-      this.$router.push({ name: 'Ratings', params: { id: item.id } });
+      this.$emit('beer-selected', item);
     },
   },
 };

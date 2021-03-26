@@ -1,10 +1,11 @@
 <template>
   <div class="home">
     <Intro />
-    <SearchForm />
+    <SearchForm @search-terms-changed="searchTermsChanged" />
     <SearchResults
       :isLoading="this.$store.getters['beerRatings/isSearchResultsLoading']"
       :items="this.$store.getters['beerRatings/searchResults']"
+      @beer-selected="beerSelected"
     />
   </div>
 </template>
@@ -19,6 +20,15 @@ export default {
     Intro,
     SearchForm,
     SearchResults,
+  },
+  methods: {
+    searchTermsChanged(searchTerms) {
+      this.$store.dispatch('beerRatings/findBeers', searchTerms);
+    },
+    beerSelected(item) {
+      this.$store.dispatch('beerRatings/selectBeer', item);
+      this.$router.push({ name: 'Ratings', params: { id: item.id } });
+    },
   },
 };
 </script>
