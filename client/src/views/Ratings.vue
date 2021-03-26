@@ -2,7 +2,7 @@
   <div class="ratings">
     <b-link href="/">Go back to home</b-link>
     <h2>Ratings for {{ this.name }}</h2>
-    <BeerRatingForm :id="id" />
+    <BeerRatingForm :id="id" @beer-rating-saving="beerRatingSaving" />
     <BeerRatingsList
       :isLoading="this.$store.getters['beerRatings/isBeerRatingsLoading']"
       :items="this.$store.getters['beerRatings/selectedBeerRatings']"
@@ -26,6 +26,14 @@ export default {
   created() {
     this.name = this.$store.getters['beerRatings/getSelectedBeerName'];
     this.$store.dispatch('beerRatings/getById', this.id);
+  },
+  methods: {
+    beerRatingSaving(beerRating) {
+      this.$store.dispatch('beerRatings/add', {
+        id: this.id,
+        data: beerRating,
+      });
+    },
   },
 };
 </script>

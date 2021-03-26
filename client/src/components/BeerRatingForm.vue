@@ -56,7 +56,7 @@ export default {
   methods: {
     onSubmit(event) {
       event.preventDefault();
-      this.$store.dispatch('beerRatings/add', { id: this.id, data: this.form });
+      this.$emit('beer-rating-saving', this.form);
       this.form = { rating: null, email: '', comments: '' };
     },
   },
