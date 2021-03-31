@@ -39,7 +39,6 @@ Lints and fixes files.
 
 ## To Do
 
-- Move state calls from components to views
 - Format search results better
 - Format beer ratings better
 - Show server errors
